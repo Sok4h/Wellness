@@ -7,4 +7,6 @@
     <color name="cyan">#46DBCC</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mtrl_textinput_default_box_stroke_color">@color/light_purple</color>
+    <color name="mtrl_textinput_focus_box_stroke_color">@color/dark_purple</color>
 </resources>
