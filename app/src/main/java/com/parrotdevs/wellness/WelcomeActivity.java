@@ -3,11 +3,14 @@ package com.parrotdevs.wellness;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.color.MaterialColors;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -32,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
         bg = findViewById(R.id.bgWelcome);
 
         btnPhysical.setOnClickListener(v ->{
-            bg.setBackgroundColor(getResources().getColor(R.color.dark_purple));
+            bg.setBackgroundColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
             textName.setTextColor(getResources().getColor(R.color.white));
             textDescription.setTextColor(getResources().getColor(R.color.white));
             textLogOut.setTextColor(getResources().getColor(R.color.white));
@@ -44,23 +47,23 @@ public class WelcomeActivity extends AppCompatActivity {
             btnEmotional.setTypeface(null, Typeface.NORMAL);
 
             btnStart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
-            btnStart.setTextColor(getResources().getColor(R.color.dark_purple));
+            btnStart.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
 
         });
 
         btnEmotional.setOnClickListener(v ->{
-            bg.setBackgroundColor(getResources().getColor(R.color.white));
-            textName.setTextColor(getResources().getColor(R.color.dark_purple));
-            textDescription.setTextColor(getResources().getColor(R.color.dark_purple));
-            textLogOut.setTextColor(getResources().getColor(R.color.dark_purple));
-            btnPhysical.setTextColor(getResources().getColor(R.color.dark_purple));
+            bg.setBackgroundColor(MaterialColors.getColor(bg,R.attr.colorOnPrimary));
+            textName.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
+            textDescription.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
+            textLogOut.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
+            btnPhysical.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
             btnPhysical.setTextSize(18);
             btnPhysical.setTypeface(null, Typeface.NORMAL);
-            btnEmotional.setTextColor(getResources().getColor(R.color.dark_purple));
+            btnEmotional.setTextColor(MaterialColors.getColor(bg,R.attr.colorPrimary));
             btnEmotional.setTextSize(28);
             btnEmotional.setTypeface(null, Typeface.BOLD);
 
-            btnStart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.dark_purple)));
+            btnStart.setBackgroundTintList(ColorStateList.valueOf(MaterialColors.getColor(bg,R.attr.colorPrimary)));
             btnStart.setTextColor(getResources().getColor(R.color.white));
 
         });
