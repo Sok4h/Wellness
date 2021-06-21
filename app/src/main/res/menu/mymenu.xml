@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/physicalTraining"
+        android:icon="@drawable/custom_physical_training"
+        android:title="Physical training" />
+    <item
+        android:id="@+id/emotionalTraining"
+        android:icon="@drawable/emotional_training_custom"
+        android:title="Emotional Training" />
+</menu>

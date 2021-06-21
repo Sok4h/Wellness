@@ -4,4 +4,6 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="dont_have_account"><u>Don’t have an account? Sign up</u></string>
     <string name="already_have_account"><u>Already have a account? Sign in</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
