@@ -8,34 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EmotionalTrainingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class EmotionalTrainingFragment extends Fragment {
 
+public class PhysicalFragment extends Fragment {
 
-
-
-    public EmotionalTrainingFragment() {
+ public PhysicalFragment() {
         // Required empty public constructor
     }
 
-    public static EmotionalTrainingFragment newInstance() {
-        EmotionalTrainingFragment fragment = new EmotionalTrainingFragment();
+
+
+    public static PhysicalFragment newInstance() {
+        PhysicalFragment fragment = new PhysicalFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-        View root=inflater.inflate(R.layout.fragment_emotional_training, container, false);
+        View root =inflater.inflate(R.layout.fragment_physical, container, false);
+
         return root;
     }
 }
