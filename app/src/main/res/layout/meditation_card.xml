@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/crHolder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,10 +20,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/crParent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/yellow">
 
             <TextView
-                android:id="@+id/meditationCardTitle"
+                android:id="@+id/categoryCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -35,16 +37,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/meditationCardImg"
-                android:layout_width="wrap_content"
+                android:id="@+id/categoryCardImg"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_image_test" />
 
             <TextView
-                android:id="@+id/meditationCardDescription"
+                android:id="@+id/categoryCardDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -55,9 +58,9 @@
                 android:textColor="@color/dark_purple"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/meditationCardImg"
-                app:layout_constraintStart_toStartOf="@+id/meditationCardTitle"
-                app:layout_constraintTop_toBottomOf="@+id/meditationCardTitle"
+                app:layout_constraintEnd_toStartOf="@+id/categoryCardImg"
+                app:layout_constraintStart_toStartOf="@+id/categoryCardTitle"
+                app:layout_constraintTop_toBottomOf="@+id/categoryCardTitle"
                 app:lineHeight="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
