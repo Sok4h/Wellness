@@ -50,7 +50,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
 
         holder.getTvTitle().setText(categoryArray.get(position).getName());
         holder.getTvDescription().setText(categoryArray.get(position).description);
-        Glide.with(group.getContext()).load(categoryArray.get(position).getUrlImage()).centerCrop().into(holder.getImage());
+        Glide.with(group.getContext()).load(categoryArray.get(position).getUrlImage()).into(holder.getImage());
 
     }
 
