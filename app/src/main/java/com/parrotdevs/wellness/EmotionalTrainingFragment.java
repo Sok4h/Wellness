@@ -2,13 +2,23 @@ package com.parrotdevs.wellness;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +46,8 @@ public class EmotionalTrainingFragment extends Fragment {
     private RecyclerView vertical;
     private CategoryAdapter adapter;
     LinearLayoutManager layoutManager;
+    FirebaseDatabase db;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +58,35 @@ public class EmotionalTrainingFragment extends Fragment {
         vertical.setLayoutManager(layoutManager);
         adapter= new CategoryAdapter();
         vertical.setAdapter(adapter);
+        db = FirebaseDatabase.getInstance();
+        db.getReference("Categories").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                for (DataSnapshot child: snapshot.getChildren()
+                     ) {
+                    adapter.Clear();
+                    Category currentCategory = child.getValue(Category.class);
+
+                    db.getReference().child("prueba").setValue(currentCategory).addOnCompleteListener(task->{
+
+                        if(task.isSuccessful()){
+
+                            Toast.makeText(getContext(), "subido", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    adapter.AddCategory(currentCategory);
+                }
+            }
+
+            @Override
+            public void onCancelled( DatabaseError error) {
+
+            }
+        });
+
         return root;
     }
 }

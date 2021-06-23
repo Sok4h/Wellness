@@ -1,10 +1,11 @@
 package com.parrotdevs.wellness;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,20 +21,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
 
     public CategoryAdapter(){
 
-        categoryArray = new ArrayList<Category>();
-
-        categoryArray.add(new Category(UUID.randomUUID().toString(),"Kundalini","Spiritual activities to relax your mind and body","https://mychiptuningfiles.com/es/image/models/YEdPJDTEJGtIpmJUdcezezZIfZtG5p.png"
-                ,"30"));
-        categoryArray.add(new Category(UUID.randomUUID().toString(),"Tonglen","Clear your mind and let out the pain and anguish of your being.","https://mychiptuningfiles.com/es/image/models/YEdPJDTEJGtIpmJUdcezezZIfZtG5p.png"
-                ,"30"));
-        categoryArray.add(new Category(UUID.randomUUID().toString(),"Kundalini ","Spiritual activities to relax your mind and body","https://mychiptuningfiles.com/es/image/models/YEdPJDTEJGtIpmJUdcezezZIfZtG5p.png"
-                ,"30"));
-        categoryArray.add(new Category(UUID.randomUUID().toString(),"Kundalini ","Spiritual activities to relax your mind and body","https://mychiptuningfiles.com/es/image/models/YEdPJDTEJGtIpmJUdcezezZIfZtG5p.png"
-                ,"30"));
-        categoryArray.add(new Category(UUID.randomUUID().toString(),"Kundalini ","Spiritual activities to relax your mind and body","https://mychiptuningfiles.com/es/image/models/YEdPJDTEJGtIpmJUdcezezZIfZtG5p.png"
-                ,"30"));
-
-
+        categoryArray = new ArrayList<>();
 
     }
     @Override
@@ -48,14 +36,30 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
     @Override
     public void onBindViewHolder(CategoryView holder, int position) {
 
+        Log.e("TAG", categoryArray.get(position).getId());
         holder.getTvTitle().setText(categoryArray.get(position).getName());
-        holder.getTvDescription().setText(categoryArray.get(position).description);
-        Glide.with(group.getContext()).load(categoryArray.get(position).getUrlImage()).into(holder.getImage());
+        holder.getTvDescription().setText(categoryArray.get(position).cardDescription);
+        Glide.with(group.getContext()).load(categoryArray.get(position).getImg()).into(holder.getImage());
+        holder.getRoot().setOnClickListener(v->{
+
+
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return categoryArray.size();
+    }
+
+    public void AddCategory(Category category){
+        categoryArray.add(category);
+        notifyDataSetChanged();
+
+    }
+
+    public void Clear(){
+
+        categoryArray.clear();
     }
 }

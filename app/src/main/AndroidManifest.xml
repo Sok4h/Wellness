@@ -10,18 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wellness">
-        <activity android:name=".MeditationActivity"></activity>
+        <activity android:name=".MeditationActivity" />
         <activity android:name=".ExerciseActivity" />
         <activity android:name=".ExercisesActivity" />
         <activity android:name=".PathActivity" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
