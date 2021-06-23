@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -42,6 +43,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
         Glide.with(group.getContext()).load(categoryArray.get(position).getImg()).into(holder.getImage());
         holder.getRoot().setOnClickListener(v->{
 
+            Intent intent = new Intent(group.getContext(),PathActivity.class);
+            Gson gson= new Gson();
+            String category = gson.toJson(categoryArray.get(position));
+            intent.putExtra("category",category);
+            group.getContext().startActivity(intent);
 
         });
 

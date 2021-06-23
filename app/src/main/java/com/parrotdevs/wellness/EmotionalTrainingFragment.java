@@ -68,15 +68,6 @@ public class EmotionalTrainingFragment extends Fragment {
                      ) {
                     adapter.Clear();
                     Category currentCategory = child.getValue(Category.class);
-
-                    db.getReference().child("prueba").setValue(currentCategory).addOnCompleteListener(task->{
-
-                        if(task.isSuccessful()){
-
-                            Toast.makeText(getContext(), "subido", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
                     adapter.AddCategory(currentCategory);
                 }
             }
