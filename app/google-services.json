@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "579045495076",
+    "project_id": "wellness-e42aa",
+    "storage_bucket": "wellness-e42aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579045495076:android:cd14d85cd0a0493ce2a3b1",
+        "android_client_info": {
+          "package_name": "com.parrotdevs.wellness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579045495076-b06hqfl3j2hnmv2o234mivadk316tm8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwHWERmp7uNRrHxzBpVCQqzlE5guX2El8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579045495076-b06hqfl3j2hnmv2o234mivadk316tm8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
