@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wellness">
-        <activity android:name=".PathActivity"></activity>
+        <activity android:name=".MeditationActivity"></activity>
+        <activity android:name=".ExerciseActivity" />
+        <activity android:name=".ExercisesActivity" />
+        <activity android:name=".PathActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
