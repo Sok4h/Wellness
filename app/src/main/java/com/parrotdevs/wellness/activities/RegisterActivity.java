@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.parrotdevs.wellness.R;
+import com.parrotdevs.wellness.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
