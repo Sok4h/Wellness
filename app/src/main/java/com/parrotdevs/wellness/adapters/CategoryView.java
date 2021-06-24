@@ -1,9 +1,11 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.adapters;
 
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.parrotdevs.wellness.R;
 
 public class CategoryView extends RecyclerView.ViewHolder{
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExercisesActivity">
+    tools:context=".activities.ExercisesActivity">
 
     <TextView
         android:id="@+id/textView26"
@@ -16,10 +16,10 @@
         android:text="Meditation"
         android:textColor="?attr/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePath" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/titlePath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

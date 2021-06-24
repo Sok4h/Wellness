@@ -1,4 +1,4 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.adapters;
 
 import android.content.Intent;
 import android.util.Log;
@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.parrotdevs.wellness.R;
+import com.parrotdevs.wellness.activities.PathActivity;
+import com.parrotdevs.wellness.model.Category;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
 
@@ -39,11 +41,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
 
         Log.e("TAG", categoryArray.get(position).getId());
         holder.getTvTitle().setText(categoryArray.get(position).getName());
-        holder.getTvDescription().setText(categoryArray.get(position).cardDescription);
+        holder.getTvDescription().setText(categoryArray.get(position).getCardDescription());
         Glide.with(group.getContext()).load(categoryArray.get(position).getImg()).into(holder.getImage());
         holder.getRoot().setOnClickListener(v->{
 
-            Intent intent = new Intent(group.getContext(),PathActivity.class);
+            Intent intent = new Intent(group.getContext(), PathActivity.class);
             Gson gson= new Gson();
             String category = gson.toJson(categoryArray.get(position));
             intent.putExtra("category",category);

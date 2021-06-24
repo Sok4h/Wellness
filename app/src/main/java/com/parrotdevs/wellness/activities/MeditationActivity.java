@@ -1,14 +1,16 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ExerciseActivity extends AppCompatActivity {
+import com.parrotdevs.wellness.R;
+
+public class MeditationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
+        setContentView(R.layout.activity_meditation);
     }
 }

@@ -1,10 +1,12 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.parrotdevs.wellness.R;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,22 +1,26 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
+import com.parrotdevs.wellness.model.Category;
+import com.parrotdevs.wellness.R;
 
 public class PathActivity extends AppCompatActivity {
 
     TextView tvPathTitle,tvType,tvPathDescription,tvPathLength;
     ConstraintLayout crPath;
+    Button btnStartPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +31,8 @@ public class PathActivity extends AppCompatActivity {
         tvPathDescription = findViewById(R.id.tvPathDescription);
         tvPathLength = findViewById(R.id.tvPathLength);
         crPath= findViewById(R.id.crPath);
+        btnStartPath = findViewById(R.id.btnStartPath);
         Category currentCategory;
-
         Gson gson = new Gson();
         String categoryString= getIntent().getStringExtra("category");
         currentCategory= gson.fromJson(categoryString,Category.class);
@@ -51,5 +55,15 @@ public class PathActivity extends AppCompatActivity {
             }
 
         }));
+
+        btnStartPath.setOnClickListener( v -> {
+
+
+            Intent intent = new Intent(this, ExercisesActivity.class);
+
+            String category = gson.toJson(currentCategory);
+            intent.putExtra("category",category);
+            startActivity(intent);
+        });
     }
 }

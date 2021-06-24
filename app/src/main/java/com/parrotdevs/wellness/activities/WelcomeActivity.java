@@ -1,4 +1,4 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.color.MaterialColors;
+import com.parrotdevs.wellness.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

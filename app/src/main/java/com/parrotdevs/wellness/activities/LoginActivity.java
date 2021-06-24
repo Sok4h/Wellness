@@ -1,4 +1,4 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.parrotdevs.wellness.R;
 
 public class LoginActivity extends AppCompatActivity {
 

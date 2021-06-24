@@ -1,6 +1,5 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,11 +8,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parrotdevs.wellness.fragments.EmotionalTrainingFragment;
+import com.parrotdevs.wellness.R;
+import com.parrotdevs.wellness.fragments.PhysicalFragment;
 
 public class HomeActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.parrotdevs.wellness;
+package com.parrotdevs.wellness.model;
 
 import java.util.ArrayList;
 
