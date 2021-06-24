@@ -2,13 +2,18 @@ package com.parrotdevs.wellness.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,22 +32,40 @@ public class ExercisesActivity extends AppCompatActivity {
     Category currentCategory;
     ExerciseAdapter exerciseAdapter;
     LinearLayoutManager layoutManager;
+    ConstraintLayout crPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercises);
-        exerciseAdapter = new ExerciseAdapter(this);
-        rvExercises=findViewById(R.id.rvExercises);
-        rvExercises.setAdapter(exerciseAdapter);
-        layoutManager=new LinearLayoutManager(this);
-        rvExercises.setLayoutManager(layoutManager);
+
         titlePath=findViewById(R.id.titlePath2);
         db= FirebaseDatabase.getInstance();
         Gson gson = new Gson();
         String categoryString= getIntent().getStringExtra("category");
         currentCategory= gson.fromJson(categoryString,Category.class);
+        exerciseAdapter = new ExerciseAdapter(this,currentCategory.getBackgroundImg());
+        rvExercises=findViewById(R.id.rvExercises);
+        rvExercises.setAdapter(exerciseAdapter);
+        layoutManager=new LinearLayoutManager(this);
+        rvExercises.setLayoutManager(layoutManager);
+
         titlePath.setText(currentCategory.getName());
+         crPath= findViewById(R.id.root);
         LoadExercises();
+
+        Glide.with(this).load(currentCategory.getBackgroundImg()).into((new CustomTarget<Drawable>() {
+            @Override
+            public void onResourceReady( Drawable resource, Transition<? super Drawable> transition) {
+                crPath.setBackground(resource);
+            }
+
+            @Override
+            public void onLoadCleared( Drawable placeholder) {
+
+            }
+
+        }));
+
     }
 
     private void LoadExercises() {

@@ -21,10 +21,13 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseView>{
 
     private Context mContext;
     private ArrayList<Exercise> exerciseArrayList;
+    String imageUrl;
 
-    public ExerciseAdapter(Context mContext){
+    public ExerciseAdapter(Context mContext,String imageUrl){
 
         this.mContext = mContext;
+        this.imageUrl=imageUrl;
+
         exerciseArrayList= new ArrayList<>();
     }
     @Override
@@ -47,6 +50,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseView>{
         Gson gson = new Gson();
         String exerciseString = gson.toJson(exerciseArrayList.get(position));
         intent.putExtra("exercise",exerciseString);
+        intent.putExtra("bgimg",this.imageUrl);
         mContext.startActivity(intent);
 
     });

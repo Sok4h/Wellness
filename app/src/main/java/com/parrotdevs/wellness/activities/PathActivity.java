@@ -43,6 +43,7 @@ public class PathActivity extends AppCompatActivity {
         tvPathLength.setText(currentCategory.getDays());
 
 
+
         Glide.with(this).load(currentCategory.getBackgroundImg()).into((new CustomTarget<Drawable>() {
             @Override
             public void onResourceReady( Drawable resource, Transition<? super Drawable> transition) {
