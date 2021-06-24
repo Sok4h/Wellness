@@ -16,12 +16,12 @@
         <activity android:name=".PathActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
