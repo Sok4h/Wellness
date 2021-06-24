@@ -39,7 +39,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
     @Override
     public void onBindViewHolder(CategoryView holder, int position) {
 
-        Log.e("TAG", categoryArray.get(position).getId());
         holder.getTvTitle().setText(categoryArray.get(position).getName());
         holder.getTvDescription().setText(categoryArray.get(position).getCardDescription());
         Glide.with(group.getContext()).load(categoryArray.get(position).getImg()).into(holder.getImage());

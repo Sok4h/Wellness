@@ -12,14 +12,28 @@ import com.parrotdevs.wellness.R;
 public class ExerciseView extends RecyclerView.ViewHolder {
 
     private ConstraintLayout root;
-    TextView titlePath;
+    private TextView titlePath;
     public ExerciseView( ConstraintLayout root) {
 
         super(root);
         this.root = root;
-        titlePath=root.findViewById(R.id.titlePath);
+        titlePath=root.findViewById(R.id.exerciseDay);
 
+    }
 
+    public ConstraintLayout getRoot() {
+        return root;
+    }
 
+    public void setRoot(ConstraintLayout root) {
+        this.root = root;
+    }
+
+    public TextView getTitlePath() {
+        return titlePath;
+    }
+
+    public void setTitlePath(TextView titlePath) {
+        this.titlePath = titlePath;
     }
 }

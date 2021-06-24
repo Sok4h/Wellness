@@ -16,10 +16,10 @@
         android:text="Meditation"
         android:textColor="?attr/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePath" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePath2" />
 
     <TextView
-        android:id="@+id/titlePath"
+        android:id="@+id/titlePath2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
