@@ -1,4 +1,4 @@
-package com.parrotdevs.wellness.adapters;
+    package com.parrotdevs.wellness.adapters;
 
 import android.widget.ImageView;
 import android.widget.TextView;
