@@ -89,7 +89,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Change password"
                 android:textColor="?attr/colorPrimary"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+                app:layout_constraintBottom_toTopOf="@+id/inputNewPasswordEditProfile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inputNameEditProfile" />
 
@@ -102,13 +102,13 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Description"
                 android:textColor="?attr/colorPrimary"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toTopOf="@+id/inputDescriptionEditProfile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout4"
+                android:id="@+id/inputConfirmPasswordEditProfile"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -116,11 +116,11 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Confirm New Password"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/btnConfirmEditProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+                app:layout_constraintTop_toBottomOf="@+id/inputNewPasswordEditProfile">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -128,7 +128,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/inputNewPasswordEditProfile"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:hint="New Password"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+                app:layout_constraintBottom_toTopOf="@+id/inputConfirmPasswordEditProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/inputDescriptionEditProfile">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -168,7 +168,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/inputDescriptionEditProfile"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
+                android:id="@+id/btnConfirmEditProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -204,7 +204,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+                app:layout_constraintTop_toBottomOf="@+id/inputConfirmPasswordEditProfile" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

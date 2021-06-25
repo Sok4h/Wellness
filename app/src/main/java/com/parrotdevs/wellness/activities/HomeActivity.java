@@ -12,10 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.parrotdevs.wellness.fragments.EmotionalTrainingFragment;
 import com.parrotdevs.wellness.R;
 import com.parrotdevs.wellness.fragments.PhysicalFragment;
@@ -26,8 +28,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navView;
     ImageView btnMenu;
     BottomNavigationView bottomNavigationView;
+    TextView tvLogOut;
     private EmotionalTrainingFragment emotionalFragment;
     private PhysicalFragment physicalFragment;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btnMenu = findViewById(R.id.btnMenu);
         bottomNavigationView = findViewById(R.id.navigator);
         navView = findViewById(R.id.navViewHome);
+        tvLogOut = findViewById(R.id.tvLogOut);
+        auth = FirebaseAuth.getInstance();
         emotionalFragment= EmotionalTrainingFragment.newInstance();
         physicalFragment= PhysicalFragment.newInstance();
         ShowFragment(physicalFragment);
@@ -44,6 +51,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //abre el nav drawer al pulsar en el boton
         btnMenu.setOnClickListener(v->{
             drawerlayout.openDrawer(GravityCompat.START);
+        });
+
+        tvLogOut.setOnClickListener(v -> {
+           auth.signOut();
+            Intent i = new Intent(this, MainActivity.class);        // Specify any activity here e.g. home or splash or login etc
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("EXIT", true);
+            startActivity(i);
+            finish();
         });
 
         navView.setNavigationItemSelectedListener(this);
@@ -65,7 +83,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             return true;
         } );
-
 
     }
 
