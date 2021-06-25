@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.parrotdevs.wellness.model.Category;
 import com.parrotdevs.wellness.R;
@@ -21,6 +23,8 @@ public class PathActivity extends AppCompatActivity {
     TextView tvPathTitle,tvType,tvPathDescription,tvPathLength;
     ConstraintLayout crPath;
     Button btnStartPath;
+    FirebaseDatabase db;
+    FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,9 @@ public class PathActivity extends AppCompatActivity {
 
             String category = gson.toJson(currentCategory);
             intent.putExtra("category",category);
+
+
+
             startActivity(intent);
         });
     }

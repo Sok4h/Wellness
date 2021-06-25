@@ -1,5 +1,6 @@
 package com.parrotdevs.wellness.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -9,6 +10,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -17,6 +19,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.parrotdevs.wellness.R;
 import com.parrotdevs.wellness.model.Exercise;
@@ -30,6 +37,8 @@ public class MeditationActivity extends AppCompatActivity {
     ImageView btnPlay;
     TextView tvMeditationTime, tvMeditationDay;
     ConstraintLayout playScreenRoot;
+    FirebaseDatabase db;
+    Exercise exerciseDB;
     String imgbg;
     Gson gson;
 
@@ -45,7 +54,7 @@ public class MeditationActivity extends AppCompatActivity {
         tvMeditationDay = findViewById(R.id.tvMeditationDay);
         playScreenRoot = findViewById(R.id.playScreenRoot);
         tvMeditationTime = findViewById(R.id.tvMeditationTime);
-
+        db=FirebaseDatabase.getInstance();
         Gson gson = new Gson();
         mHandler = new Handler();
 
@@ -79,6 +88,39 @@ public class MeditationActivity extends AppCompatActivity {
         mediaPlayer.setOnCompletionListener(mp -> {
             btnPlay.setImageResource(R.drawable.btn_play);
             Toast.makeText(this,"Completastes esta lección", Toast.LENGTH_SHORT).show();
+
+            db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryId").equalTo(currentExercise.getCategoryId()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+
+                        for (DataSnapshot child:
+                             snapshot.getChildren()) {
+                            exerciseDB = child.getValue(Exercise.class);
+                        }
+
+                        Log.e("TAG", snapshot.getKey() );
+                        db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).child(exerciseDB.getId()).setValue(currentExercise).addOnCompleteListener(task->{
+
+                           finish();
+
+                        });
+
+                    }
+
+                    else{
+                        db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).child(currentExercise.getId()).setValue(currentExercise).addOnCompleteListener(task->{
+
+                            finish();
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
         });
 
     }
@@ -86,7 +128,8 @@ public class MeditationActivity extends AppCompatActivity {
     private void Prepare() {
 
         try {
-            mediaPlayer.setDataSource(currentExercise.getAudioLink());
+            //mediaPlayer.setDataSource(currentExercise.getAudioLink());
+            mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/wellness-e42aa.appspot.com/o/meditations%2FKundalini%2Ftengo-5-segundos.mp3?alt=media&token=98ebd68d-23c8-4996-bd74-5965b21f45b1");
             mediaPlayer.setOnPreparedListener(mp -> {
 
                 int length = mediaPlayer.getDuration();

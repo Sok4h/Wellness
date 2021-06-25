@@ -4,26 +4,19 @@ import java.util.ArrayList;
 
 public class UserPath {
 
-    private String id,userId;
-    private ArrayList<Exercise> exerciseArrayList;
+    private String userId;
+
 
     public UserPath(){
 
 
     }
-    public UserPath(String id, String userId) {
-        this.id = id;
+    public UserPath(String userId) {
+
         this.userId = userId;
-        exerciseArrayList = new ArrayList<>();
+
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getUserId() {
         return userId;
@@ -33,11 +26,4 @@ public class UserPath {
         this.userId = userId;
     }
 
-    public ArrayList<Exercise> getExerciseArrayList() {
-        return exerciseArrayList;
-    }
-
-    public void setExerciseArrayList(ArrayList<Exercise> exerciseArrayList) {
-        this.exerciseArrayList = exerciseArrayList;
-    }
 }

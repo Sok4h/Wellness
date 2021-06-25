@@ -13,6 +13,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import com.parrotdevs.wellness.R;
 import com.parrotdevs.wellness.model.User;
+import com.parrotdevs.wellness.model.UserPath;
+
+import java.util.UUID;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -21,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     FirebaseDatabase db;
     FirebaseAuth auth;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register() {
+
         String name, email, password;
         name = inputName.getEditText().getText().toString();
         email = inputEmail.getEditText().getText().toString();
@@ -58,17 +63,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                     String id = task.getResult().getUser().getUid();
 
-                    User user = new User(id, name, email);
+                    user = new User(id, name, email);
 
                     db.getReference("users").child(id).setValue(user).addOnCompleteListener(register -> {
 
                         if (register.isSuccessful()) {
 
-                            Toast.makeText(this, "registrado correctamente", Toast.LENGTH_SHORT).show();
+                            UploadPath();
 
-                            Intent intent = new Intent(this, HomeActivity.class);
-                            startActivity(intent);
-                            finish();
                         } else {
 
                             Toast.makeText(this, register.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -84,5 +86,26 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void UploadPath() {
+
+
+        UserPath userPath = new UserPath();
+        db.getReference("UsersPath").child(user.getId()).setValue(userPath).addOnCompleteListener(task->{
+
+           if(task.isSuccessful()){
+               Intent intent = new Intent(this, HomeActivity.class);
+               startActivity(intent);
+               Toast.makeText(this, "registrado correctamente", Toast.LENGTH_SHORT).show();
+               finish();
+
+           }
+           else{
+
+               Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+           }
+
+        });
     }
 }
