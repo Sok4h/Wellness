@@ -27,7 +27,7 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -42,16 +42,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/imageView7"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:tint="?attr/colorPrimary"
+        android:src="@drawable/ic_profile"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        app:srcCompat="@drawable/ic_outline_account_circle_24" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -91,7 +92,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="Description"
         android:textColor="?attr/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintBottom_toTopOf="@+id/tvDescriptionProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEditProfile"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -101,13 +102,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Activities"
         android:textColor="?attr/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionProfile" />
 
     <TextView
         android:id="@+id/textView17"
@@ -136,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView3" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tvDescriptionProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -146,7 +147,7 @@
         android:text="I am a person looking to relax to relieve stress and improve my performance."
         app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 

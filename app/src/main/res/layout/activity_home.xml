@@ -48,17 +48,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navViewHome"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="?attr/colorPrimary"
         app:headerLayout="@layout/nav_header"
         app:itemTextColor="?attr/colorOnPrimary"
-        app:menu="@menu/nav_menu"
-        android:layout_gravity="start"
-       >
+        app:menu="@menu/nav_menu">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tvLogOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
