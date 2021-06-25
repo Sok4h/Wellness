@@ -2,17 +2,18 @@ package com.parrotdevs.wellness.model;
 
 public class Exercise {
 
-    String id,categoryId,audioLink,day,description, length;
+    String id,categoryId,categoryName,audioLink,day,description, length;
 
     public Exercise() {
 
     }
 
 
-    public Exercise(String id, String categoryId, String audioLink, String day, String description, String length) {
+    public Exercise(String id, String categoryId,String categoryName, String audioLink, String day, String description, String length) {
         this.id = id;
         this.categoryId = categoryId;
         this.audioLink = audioLink;
+        this.categoryName = categoryName;
         this.day = day;
         this.description = description;
         this.length = length;
@@ -64,5 +65,13 @@ public class Exercise {
 
     public void setLength(String length) {
         this.length = length;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
