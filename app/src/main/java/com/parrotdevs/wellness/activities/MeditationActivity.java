@@ -7,9 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.format.DateUtils;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
@@ -25,23 +28,32 @@ public class MeditationActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     Exercise currentExercise;
     ImageView btnPlay;
-    TextView tvMeditationTime,tvMeditationDay;
+    TextView tvMeditationTime, tvMeditationDay;
     ConstraintLayout playScreenRoot;
     String imgbg;
     Gson gson;
+
+    private Runnable mRunnable;
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
-        btnPlay=findViewById(R.id.btnPlay);
-        tvMeditationDay=findViewById(R.id.tvMeditationDay);
+
+        btnPlay = findViewById(R.id.btnPlay);
+        tvMeditationDay = findViewById(R.id.tvMeditationDay);
+        playScreenRoot = findViewById(R.id.playScreenRoot);
+        tvMeditationTime = findViewById(R.id.tvMeditationTime);
+
         Gson gson = new Gson();
-        playScreenRoot=findViewById(R.id.playScreenRoot);
-        tvMeditationTime= findViewById(R.id.tvMeditationTime);
-        String exerciseString= getIntent().getStringExtra("exercise");
-        imgbg= getIntent().getStringExtra("bgimg");
+        mHandler = new Handler();
+
+        String exerciseString = getIntent().getStringExtra("exercise");
+        imgbg = getIntent().getStringExtra("bgimg");
+
         currentExercise = gson.fromJson(exerciseString, Exercise.class);
-        tvMeditationDay.setText("Day " +currentExercise.getDay());
+        tvMeditationDay.setText("Day " + currentExercise.getDay());
 
 
         Glide.with(this).load(imgbg).into((new CustomTarget<Drawable>() {
@@ -51,7 +63,7 @@ public class MeditationActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onLoadCleared( Drawable placeholder) {
+            public void onLoadCleared(Drawable placeholder) {
 
             }
 
@@ -59,9 +71,14 @@ public class MeditationActivity extends AppCompatActivity {
 
         mediaPlayer = new MediaPlayer();
         Prepare();
-        btnPlay.setOnClickListener( v -> {
+        btnPlay.setOnClickListener(v -> {
 
             Play();
+        });
+
+        mediaPlayer.setOnCompletionListener(mp -> {
+            btnPlay.setImageResource(R.drawable.btn_play);
+            Toast.makeText(this,"Completastes esta lección", Toast.LENGTH_SHORT).show();
         });
 
     }
@@ -86,16 +103,36 @@ public class MeditationActivity extends AppCompatActivity {
 
     private void Play() {
 
-    if(mediaPlayer.isPlaying()){
+        if (mediaPlayer.isPlaying()) {
 
-        mediaPlayer.pause();
-        btnPlay.setImageResource(R.drawable.btn_play);
-    }
-    else{
+            mediaPlayer.pause();
+            btnPlay.setImageResource(R.drawable.btn_play);
+        } else {
 
-        mediaPlayer.start();
-        btnPlay.setImageResource(R.drawable.pause_btn);
-    }
+            mediaPlayer.start();
+            getAudioStats();
+            initializeTimer();
+
+            btnPlay.setImageResource(R.drawable.pause_btn);
+        }
 
     }
+
+    protected void initializeTimer(){
+
+        mRunnable = () -> {
+            if(mediaPlayer!=null){
+                getAudioStats();
+            }
+            mHandler.postDelayed(mRunnable,1000);
+        };
+        mHandler.postDelayed(mRunnable,1000);
+    }
+
+    protected void getAudioStats() {
+        int due = (mediaPlayer.getDuration() - mediaPlayer.getCurrentPosition()) / 1000;
+        String durationText = DateUtils.formatElapsedTime(due);
+        tvMeditationTime.setText(durationText);
+    }
+
 }
