@@ -6,26 +6,31 @@
     android:layout_height="176dp"
     android:background="?attr/colorPrimary">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="56dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="32dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePicNav"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:src="@drawable/ic_profile_placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_profile_placeholder" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvUsernameDrawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="TextView"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/profilePicNav"
+        app:layout_constraintStart_toStartOf="@+id/profilePicNav"
+        app:layout_constraintTop_toBottomOf="@+id/profilePicNav" />
 </androidx.constraintlayout.widget.ConstraintLayout>
