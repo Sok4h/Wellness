@@ -91,10 +91,10 @@ public class RegisterActivity extends AppCompatActivity {
     private void UploadPath() {
 
 
-        UserPath userPath = new UserPath();
-        db.getReference("UsersPath").child(user.getId()).setValue(userPath).addOnCompleteListener(task->{
+        UserPath userPath = new UserPath(user.getId());
+        db.getReference("UsersPath").child(user.getId()).setValue(userPath).addOnCompleteListener(path->{
 
-           if(task.isSuccessful()){
+           if(path.isSuccessful()){
                Intent intent = new Intent(this, HomeActivity.class);
                startActivity(intent);
                Toast.makeText(this, "registrado correctamente", Toast.LENGTH_SHORT).show();
@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
            }
            else{
 
-               Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, path.getException().getMessage(), Toast.LENGTH_SHORT).show();
            }
 
         });
