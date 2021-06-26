@@ -37,10 +37,12 @@ public class HistoyAdapter  extends RecyclerView.Adapter<HistoryView>{
         return new HistoryView(rowRoot);
     }
 
+    
     @Override
     public void onBindViewHolder(HistoryView holder, int position) {
 
-        holder.getTvDayHistory().setText(exerciseArrayList.get(position).getDay());
+        // TODO: 25/06/2021 mandar intent fondo 
+        holder.getTvDayHistory().setText("Day "+ exerciseArrayList.get(position).getDay());
         holder.getTvNameHistory().setText(exerciseArrayList.get(position).getCategoryName());
         holder.getRoot().setOnClickListener(v->{
 
@@ -56,5 +58,11 @@ public class HistoyAdapter  extends RecyclerView.Adapter<HistoryView>{
     @Override
     public int getItemCount() {
         return exerciseArrayList.size();
+    }
+
+    public void AddExercise(Exercise exercise){
+
+        exerciseArrayList.add(exercise);
+        notifyDataSetChanged();
     }
 }

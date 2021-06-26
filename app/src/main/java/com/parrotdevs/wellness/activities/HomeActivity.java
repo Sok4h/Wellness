@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView tvLogOut;
     private EmotionalTrainingFragment emotionalFragment;
     private PhysicalFragment physicalFragment;
-
+    
     private FirebaseAuth auth;
 
     @Override
@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         physicalFragment= PhysicalFragment.newInstance();
         ShowFragment(physicalFragment);
 
+        // TODO: 25/06/2021 cargar datos del usuario en la navegación lateral 
+        // TODO: 25/06/2021 centrar elementos del menú 
         //abre el nav drawer al pulsar en el boton
         btnMenu.setOnClickListener(v->{
             drawerlayout.openDrawer(GravityCompat.START);
