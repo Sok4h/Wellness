@@ -1,9 +1,13 @@
 package com.parrotdevs.wellness.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.parrotdevs.wellness.R;
 import com.parrotdevs.wellness.activities.EditProfileActivity;
+import com.parrotdevs.wellness.adapters.HistoyAdapter;
+import com.parrotdevs.wellness.model.Exercise;
 import com.parrotdevs.wellness.model.User;
 
 import java.util.Objects;
@@ -26,7 +32,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     Button btnEditProfile ;
     CircleImageView profilePic;
-
+    RecyclerView historyEmotional;
+    HistoyAdapter adapter;
+    LinearLayoutManager layoutManager;
     private FirebaseDatabase db;
     private User currentUser;
     private FirebaseAuth auth;
@@ -36,15 +44,21 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
         btnEditProfile =  findViewById(R.id.btnEditProfile);
         profilePic = findViewById(R.id.profile_image);
         tvDescription = findViewById(R.id.tvDescriptionProfile);
+        historyEmotional = findViewById(R.id.historyEmotional);
+        adapter=new HistoyAdapter(this);
+        layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        historyEmotional.setAdapter(adapter);
+        historyEmotional.setLayoutManager(layoutManager);
 
         db = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        loadUser();
+        LoadUser();
+        LoadHistory();
+
 
         btnEditProfile.setOnClickListener( v -> {
            Intent intent = new Intent(this, EditProfileActivity.class);
@@ -52,8 +66,32 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    private void LoadHistory() {
 
-    private void loadUser(){
+        db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryType").equalTo("emotional").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange( DataSnapshot snapshot) {
+
+                for (DataSnapshot child:
+                      snapshot.getChildren()) {
+
+                    Exercise tempExercise = child.getValue(Exercise.class);
+                    adapter.AddExercise(tempExercise);
+                    Log.e("TAG", "xd" );
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+    }
+
+
+    private void LoadUser(){
         db.getReference("users").child(Objects.requireNonNull(auth.getUid())).addValueEventListener(
                 new ValueEventListener() {
 
