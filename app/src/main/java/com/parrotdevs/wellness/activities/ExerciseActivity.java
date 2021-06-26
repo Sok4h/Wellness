@@ -45,6 +45,7 @@ public class ExerciseActivity extends AppCompatActivity {
             intent.putExtra("exercise",exerciseString);
             intent.putExtra("bgimg",categoryString);
             startActivity(intent);
+            finish();
         });
 
     }

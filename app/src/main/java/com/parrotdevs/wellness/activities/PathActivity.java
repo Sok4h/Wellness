@@ -72,6 +72,7 @@ public class PathActivity extends AppCompatActivity {
 
 
             startActivity(intent);
+            finish();
         });
     }
 }
