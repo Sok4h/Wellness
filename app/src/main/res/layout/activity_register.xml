@@ -63,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_chainStyle="packed"
         android:hint="Name"
+        app:boxStrokeColor="@color/light_purple"
         app:startIconDrawable="@drawable/ic_outline_person_24"
         app:startIconTint="@color/light_purple"
         android:textColorHint="@color/light_purple"
@@ -85,6 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:hint="Email"
+        app:boxStrokeColor="@color/dark_purple"
         app:layout_constraintTop_toBottomOf="@+id/inputNameRegister"
         app:startIconDrawable="@drawable/ic_outline_email_24"
         app:startIconTint="@color/light_purple"
@@ -109,7 +111,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailRegister"
+        app:endIconMode="password_toggle"
         android:hint="Password"
+        app:boxStrokeColor="@color/dark_purple"
         app:startIconDrawable="@drawable/ic_outline_lock_24"
         app:startIconTint="@color/light_purple"
         android:textColorHint="@color/light_purple"
@@ -118,7 +122,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins" />
+            android:fontFamily="@font/poppins"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
