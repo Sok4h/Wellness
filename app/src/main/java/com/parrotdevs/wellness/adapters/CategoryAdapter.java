@@ -70,7 +70,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
 
     private void CheckForPath(int position) {
 
-    db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryId").equalTo(categoryArray.get(position).getId()).addValueEventListener(new ValueEventListener() {
+    db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryId").equalTo(categoryArray.get(position).getId()).addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot snapshot) {
 

@@ -68,7 +68,7 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     private void LoadExercises() {
-        db.getReference("Exercises").orderByChild("categoryId").equalTo(currentCategory.getId()).addValueEventListener(new ValueEventListener() {
+        db.getReference("Exercises").orderByChild("categoryId").equalTo(currentCategory.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot snapshot) {
                 Log.e("TAG", String.valueOf(snapshot.getChildrenCount()));
