@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
 
                             Intent intent = new Intent(this,HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
                             finish();
                         }

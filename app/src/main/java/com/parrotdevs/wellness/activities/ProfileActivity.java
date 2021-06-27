@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Exercise tempExercise = child.getValue(Exercise.class);
                     adapter.AddExercise(tempExercise);
-                    Log.e("TAG", "xd" );
+
 
                 }
             }

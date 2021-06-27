@@ -89,20 +89,25 @@ public class MeditationActivity extends AppCompatActivity {
             btnPlay.setImageResource(R.drawable.btn_play);
             Toast.makeText(this,"Completastes esta lección", Toast.LENGTH_SHORT).show();
 
-            db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryId").equalTo(currentExercise.getCategoryId()).addValueEventListener(new ValueEventListener() {
+            db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).orderByChild("categoryId").equalTo(currentExercise.getCategoryId()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
+
                     if(snapshot.exists()){
 
                         for (DataSnapshot child:
                              snapshot.getChildren()) {
                             exerciseDB = child.getValue(Exercise.class);
+
                         }
 
                         Log.e("TAG", snapshot.getKey() );
-                        db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).child(exerciseDB.getId()).setValue(currentExercise).addOnCompleteListener(task->{
+                        db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).child(exerciseDB.getId()).removeValue().addOnCompleteListener(task->{
 
-                           finish();
+
+                            db.getReference("UsersPath").child(FirebaseAuth.getInstance().getUid()).child(currentExercise.getId()).setValue(currentExercise).addOnCompleteListener(task1 -> {
+                                finish();
+                            });
 
                         });
 

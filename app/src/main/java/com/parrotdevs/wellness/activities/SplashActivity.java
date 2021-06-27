@@ -22,11 +22,13 @@ public class SplashActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener( v -> {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
 
         btnRegister.setOnClickListener( v -> {
             Intent intent = new Intent(this, RegisterActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
 

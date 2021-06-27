@@ -142,6 +142,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.profile:
                 Intent intent = new Intent(this, ProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
         }
