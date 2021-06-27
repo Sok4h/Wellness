@@ -1,5 +1,6 @@
 package com.parrotdevs.wellness.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -51,7 +52,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseView>{
         String exerciseString = gson.toJson(exerciseArrayList.get(position));
         intent.putExtra("exercise",exerciseString);
         intent.putExtra("bgimg",this.imageUrl);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mContext.startActivity(intent);
+        ((Activity)mContext).finish();
 
     });
     }

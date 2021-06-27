@@ -187,7 +187,7 @@ public class EditProfileActivity extends AppCompatActivity {
         StorageReference profilePicRef = reference.child("userPhotos/" + imageId);
         profilePicRef.putFile(profilePicUri).addOnSuccessListener(taskSnapshot -> {
 
-            Toast.makeText(this, "ImagenSubida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Imagen Subida", Toast.LENGTH_SHORT).show();
 
             profilePicRef.getDownloadUrl().addOnSuccessListener(uri -> {
 
@@ -196,7 +196,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-                        Toast.makeText(this, "link actualizado", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

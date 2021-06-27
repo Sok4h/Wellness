@@ -44,7 +44,9 @@ public class ExerciseActivity extends AppCompatActivity {
             Intent intent = new Intent(this,MeditationActivity.class);
             intent.putExtra("exercise",exerciseString);
             intent.putExtra("bgimg",categoryString);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            finish();
         });
 
     }

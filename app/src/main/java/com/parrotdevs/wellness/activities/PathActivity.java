@@ -70,8 +70,9 @@ public class PathActivity extends AppCompatActivity {
             intent.putExtra("category",category);
 
 
-
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+            finish();
         });
     }
 }

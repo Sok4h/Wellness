@@ -41,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
             if(user != null){
 
                 Intent intent = new Intent(this,HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 finish();
             }
             else{
 
                 Intent intent = new Intent(this, SplashActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 finish();
             }
