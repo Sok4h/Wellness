@@ -1,24 +1,24 @@
 package com.parrotdevs.wellness.adapters;
 
-import android.view.View;
+
 import android.widget.TextView;
-
-
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.parrotdevs.wellness.R;
 
-public class ExerciseView extends RecyclerView.ViewHolder {
 
-    private ConstraintLayout root;
-    private TextView titlePath;
-    public ExerciseView( ConstraintLayout root) {
+public class ExerciseView extends RecyclerView.ViewHolder {
+    ConstraintLayout root;
+    TextView tvDayHistory,tvNameHistory;
+
+    public ExerciseView(ConstraintLayout root) {
 
         super(root);
         this.root = root;
-        titlePath=root.findViewById(R.id.exerciseDay);
 
+        tvDayHistory =root.findViewById(R.id.tvDayHistory);
+        tvNameHistory =root.findViewById(R.id.tvNameHistory);
     }
 
     public ConstraintLayout getRoot() {
@@ -29,11 +29,19 @@ public class ExerciseView extends RecyclerView.ViewHolder {
         this.root = root;
     }
 
-    public TextView getTitlePath() {
-        return titlePath;
+    public TextView getTvDayHistory() {
+        return tvDayHistory;
     }
 
-    public void setTitlePath(TextView titlePath) {
-        this.titlePath = titlePath;
+    public void setTvDayHistory(TextView tvDayHistory) {
+        this.tvDayHistory = tvDayHistory;
+    }
+
+    public TextView getTvNameHistory() {
+        return tvNameHistory;
+    }
+
+    public void setTvNameHistory(TextView tvNameHistory) {
+        this.tvNameHistory = tvNameHistory;
     }
 }

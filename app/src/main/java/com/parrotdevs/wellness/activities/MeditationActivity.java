@@ -55,7 +55,7 @@ public class MeditationActivity extends AppCompatActivity {
         playScreenRoot = findViewById(R.id.playScreenRoot);
         tvMeditationTime = findViewById(R.id.tvMeditationTime);
         db=FirebaseDatabase.getInstance();
-        Gson gson = new Gson();
+        gson = new Gson();
         mHandler = new Handler();
 
         String exerciseString = getIntent().getStringExtra("exercise");

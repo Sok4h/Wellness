@@ -1,6 +1,5 @@
 package com.parrotdevs.wellness.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,7 +42,7 @@ public class ExercisesActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String categoryString= getIntent().getStringExtra("category");
         currentCategory= gson.fromJson(categoryString,Category.class);
-        exerciseAdapter = new ExerciseAdapter(this,currentCategory.getBackgroundImg());
+        exerciseAdapter = new ExerciseAdapter(this);
         rvExercises=findViewById(R.id.rvExercises);
         rvExercises.setAdapter(exerciseAdapter);
         layoutManager=new LinearLayoutManager(this);

@@ -1,14 +1,11 @@
 package com.parrotdevs.wellness.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,8 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.parrotdevs.wellness.R;
-import com.parrotdevs.wellness.activities.EditProfileActivity;
-import com.parrotdevs.wellness.adapters.HistoyAdapter;
+import com.parrotdevs.wellness.adapters.ExerciseAdapter;
 import com.parrotdevs.wellness.model.Exercise;
 import com.parrotdevs.wellness.model.User;
 
@@ -33,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     Button btnEditProfile ;
     CircleImageView profilePic;
     RecyclerView historyEmotional;
-    HistoyAdapter adapter;
+    ExerciseAdapter adapter;
     LinearLayoutManager layoutManager;
     private FirebaseDatabase db;
     private User currentUser;
@@ -48,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilePic = findViewById(R.id.profile_image);
         tvDescription = findViewById(R.id.tvDescriptionProfile);
         historyEmotional = findViewById(R.id.historyEmotional);
-        adapter=new HistoyAdapter(this);
+        adapter=new ExerciseAdapter(this);
         layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         historyEmotional.setAdapter(adapter);
         historyEmotional.setLayoutManager(layoutManager);
