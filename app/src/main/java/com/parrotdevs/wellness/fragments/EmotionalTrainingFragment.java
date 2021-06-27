@@ -61,10 +61,10 @@ public class EmotionalTrainingFragment extends Fragment {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
+                adapter.Clear();
                 for (DataSnapshot child: snapshot.getChildren()
                      ) {
-                    adapter.Clear();
+
                     Category currentCategory = child.getValue(Category.class);
                     adapter.AddCategory(currentCategory);
                 }

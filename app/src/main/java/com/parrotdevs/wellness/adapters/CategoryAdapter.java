@@ -1,6 +1,7 @@
 package com.parrotdevs.wellness.adapters;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryView>{
         holder.getTvTitle().setText(categoryArray.get(position).getName());
         holder.getTvDescription().setText(categoryArray.get(position).getCardDescription());
         Glide.with(group.getContext()).load(categoryArray.get(position).getImg()).into(holder.getImage());
-
+        holder.getCrParent().setBackgroundColor(Color.parseColor(categoryArray.get(position).getColor()));
         holder.getRoot().setOnClickListener(v->{
 
             category = gson.toJson(categoryArray.get(position));

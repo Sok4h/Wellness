@@ -9,7 +9,7 @@ import com.parrotdevs.wellness.R;
 
 public class CategoryView extends RecyclerView.ViewHolder{
 
-    private ConstraintLayout root;
+    private ConstraintLayout root,crParent;
     private TextView tvTitle,tvDescription;
     private ImageView image;
 
@@ -21,6 +21,7 @@ public class CategoryView extends RecyclerView.ViewHolder{
         tvTitle = root.findViewById(R.id.categoryCardTitle);
         tvDescription = root.findViewById(R.id.categoryCardDescription);
         image = root.findViewById(R.id.categoryCardImg);
+        crParent = root.findViewById(R.id.crParent);
 
     }
 
@@ -54,5 +55,13 @@ public class CategoryView extends RecyclerView.ViewHolder{
 
     public void setImage(ImageView image) {
         this.image = image;
+    }
+
+    public ConstraintLayout getCrParent() {
+        return crParent;
+    }
+
+    public void setCrParent(ConstraintLayout crParent) {
+        this.crParent = crParent;
     }
 }
