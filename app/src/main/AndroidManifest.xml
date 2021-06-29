@@ -32,6 +32,14 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/com_google_android_gms_fonts_certs_prod" />
+
+        <service
+            android:name=".utils.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
